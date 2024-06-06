@@ -1,0 +1,29 @@
+﻿@using FirstApp.Models.ViewModels
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@model List<FirstApp.Models.ViewModels.CourseViewModel>
+
+@{
+    ViewData["Title"] = "Catalogo dei corsi";
+}
+
+<h1>@ViewData["Title"]</h1>
+<br/>
+@foreach(CourseViewModel course in Model)
+{
+    <hr/>
+    <div class="row" style="margin-left: 10%; align-items: center; justify-content: space-around;">
+        <div class="col-md-1" style="display: flex; flex-direction: column; align-items: end;">
+            <h2 style="width: max-content">@course.Title</h2>
+            <author style="width: max-content">di @course.Author</author>
+        </div>
+        <div class="col-md-2">
+            <p>@course.Price</p>
+        </div>
+        <div class="col-md-2">
+            <p>@course.Duration</p>
+        </div>
+        <div class="col-md-2">
+            <a class="btn btn-outline-primary" asp-action="Details" asp-route-id="@course.Id">Dettagli</a>
+        </div>
+    </div>
+}
